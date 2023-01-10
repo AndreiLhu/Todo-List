@@ -21,11 +21,6 @@ function App() {
     }));
   };
 
-  const handleTodoSubmit = () => {
-    setTodos([...todos, todo]);
-    setTodo((prevState) => ({ ...prevState, description: '' }));
-  };
-
   let tableHeaders = Object.keys(todo);
   tableHeaders.push('remove');
 
@@ -42,6 +37,14 @@ function App() {
         return s;
       })
     );
+  };
+  const handleTodoSubmit = () => {
+    if (todo.description.length) {
+      setTodos([...todos, todo]);
+      setTodo((prevState) => ({ ...prevState, description: '' }));
+    } else {
+      alert('Please write the todo description!');
+    }
   };
 
   return (
@@ -65,7 +68,7 @@ function App() {
               <td> {e.id.split('-')[0]} </td>
               <td> {e.description} </td>
               <td onClick={() => markAsDone(e)}>
-                {e.is_done ? 'completed' : 'not complete'}{' '}
+                {e.is_done ? 'done' : 'not done'}{' '}
               </td>
               <td onClick={() => removeTodo(e)}> x </td>
             </tr>
