@@ -33,6 +33,17 @@ function App() {
     setTodos([...todos].filter((s) => s.id !== e.id));
   };
 
+  const markAsDone = (e) => {
+    setTodos(
+      [...todos].map((s) => {
+        if (s.id === e.id) {
+          s.is_done = !s.is_done;
+        }
+        return s;
+      })
+    );
+  };
+
   return (
     <div className="App">
       <form onSubmit={(e) => e.preventDefault()}>
@@ -53,7 +64,9 @@ function App() {
             <tr>
               <td> {e.id.split('-')[0]} </td>
               <td> {e.description} </td>
-              <td> {e.is_done ? 'completed' : 'not complete'} </td>
+              <td onClick={() => markAsDone(e)}>
+                {e.is_done ? 'completed' : 'not complete'}{' '}
+              </td>
               <td onClick={() => removeTodo(e)}> x </td>
             </tr>
           ))}
