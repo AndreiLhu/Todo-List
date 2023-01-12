@@ -68,7 +68,7 @@ function App() {
               <td> {e.id.split('-')[0]} </td>
               <td> {e.description} </td>
               <td onClick={() => markAsDone(e)}>
-                {e.is_done ? 'done' : 'not done'}{' '}
+                {e.is_done ? ' done ' : 'not done'}{' '}
               </td>
               <td onClick={() => removeTodo(e)}> x </td>
             </tr>
