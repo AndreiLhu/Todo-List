@@ -51,8 +51,14 @@ function App() {
     <div className="App">
       <form onSubmit={(e) => e.preventDefault()}>
         <h1>Todo List</h1>
-        <input value={todo.description} onChange={handleTodoOnChange} />
-        <button onClick={handleTodoSubmit}>Add Todo</button>
+        <input
+          value={todo.description}
+          onChange={handleTodoOnChange}
+          className="inputfield"
+        />
+        <button onClick={handleTodoSubmit} className="buttonfield">
+          Add Todo
+        </button>
       </form>
       <table>
         <thead>
